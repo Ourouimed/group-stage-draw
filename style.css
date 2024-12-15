@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{margin: 0;padding: 0;box-sizing: border-box;font-family: Poppins , serif;}
+body{background: #ededed;display: flex;justify-content: center;align-items: center;min-height: 100vh;}
+.group {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px #d8d8d8;
+}
+.group h3 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.group-teams li {
+    list-style: none;
+    background: #ededed;
+    padding: 8px 20px;
+    border-radius: 8px;
+}.group-teams li:not(:last-child){margin-bottom: 4px;}
+.container{
+    WIDTH: 100%;
+    padding: 20PX;
+}
+.group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 5px;
+}
+.btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 10px;
+}
+button {
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}   
+#start-btn , #hide-pots{
+    background: blue;
+    color: white;
+}
+#show-pots {
+    background: white;
+    color: black;
+}
+#hide-pots{
+    display: block;
+    margin: 10px auto;
+}
+.pots-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    backdrop-filter: blur(44px);
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.pots-container.active {
+    display: flex;
+}
+.pots {
+    width: 90%;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #d8d8d8;
+}
+table.pot {
+    border-collapse: collapse;
+    border-radius: 6px;
+}
+table.pot tr td{
+    padding: 3px 10px;
+    text-align: center;
+}
+table.pot > thead tr {
+    background: black;
+    color: white;
+}
+.pots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(200px , 1fr));
+    gap: 5px;
+}
