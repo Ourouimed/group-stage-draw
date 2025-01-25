@@ -1,3 +1,4 @@
+// HTML Element References
 let showPots = document.getElementById("show-pots");
 let hidePots = document.getElementById("hide-pots");
 let PotsContainer = document.querySelector(".pots-container");
@@ -11,10 +12,38 @@ hidePots.addEventListener("click", () => PotsContainer.classList.remove("active"
 
 // Pots to be drawn
 let Pots = {
-    Pot1: ["Real Madrid", "Barcelona", "Man City", "Liverpool", "Atletico", "Chelsea", "Arsenal", "Bayern"],
-    Pot2: ["PSG", "Inter Milan", "Juventus", "Napoli", "Dortmund", "RB Leipzig", "Wydad", "Sevilla"],
-    Pot3: ["AC Milan", "Tottenham", "Benfica", "Ajax", "Marseille", "Lazio", "Al Hilal", "Inter Miami"],
-    Pot4: ["Galatasaray", "Celtic", "Rangers", "Feyenoord", "Red Star Belgrade", "Al Nasr", "Raja CA", "Al Ahly"]
+    Pot1: [
+        { name: "Morocco", flag: "assets/flags/ma.webp" },
+        { name: "Senegal", flag: "assets/flags/sn.webp" },
+        { name: "Egypt", flag: "assets/flags/eg.webp" },
+        { name: "Algeria", flag: "assets/flags/dz.webp" },
+        { name: "Nigeria", flag: "assets/flags/ng.webp" },
+        { name: "Ivory Coast", flag: "assets/flags/ci.webp" }
+    ],
+    Pot2: [
+        { name: "Cameroon", flag: "assets/flags/cm.webp" },
+        { name: "Mali", flag: "assets/flags/ml.webp" },
+        { name: "Tunisia", flag: "assets/flags/tn.webp" },
+        { name: "South Africa", flag: "assets/flags/za.webp" },
+        { name: "Burkina Faso", flag: "assets/flags/bf.webp" },
+        { name: "DR Congo", flag: "assets/flags/cd.webp" }
+    ],
+    Pot3: [
+        { name: "Gabon", flag: "assets/flags/ga.webp" },
+        { name: "Angola", flag: "assets/flags/ao.webp" },
+        { name: "Zambia", flag: "assets/flags/zm.webp" },
+        { name: "Equatorial Guinea", flag: "assets/flags/gq.webp" },
+        { name: "Guinea", flag: "assets/flags/gn.webp" },
+        { name: "Benin", flag: "assets/flags/bj.webp" }
+    ],
+    Pot4: [
+        { name: "Mozambique", flag: "assets/flags/mz.webp" },
+        { name: "Comoros", flag: "assets/flags/km.webp" },
+        { name: "Tanzania", flag: "assets/flags/tz.webp" },
+        { name: "Gambia", flag: "assets/flags/gm.webp" },
+        { name: "Zimbabwe", flag: "assets/flags/zw.webp" },
+        { name: "Botswana", flag: "assets/flags/bw.webp" }
+    ]
 };
 
 // Save a copy to reset the draw
@@ -23,7 +52,7 @@ const SavedPots = structuredClone(Pots);
 // Create Pots HTML Elements
 potsEls.forEach((pot, i) => {
     let thead = `<thead><tr><td>Pot ${i + 1}</td></tr></thead>`;
-    let tbody = Pots[`Pot${i + 1}`].map(team => `<tr><td>${team}</td></tr>`).join("");
+    let tbody = Pots[`Pot${i + 1}`].map(team => `<tr><td><img alt="${team.name}" src="${team.flag}"> ${team.name}</td></tr>`).join("");
     pot.innerHTML = thead + `<tbody>${tbody}</tbody>`;
 });
 
@@ -39,25 +68,54 @@ for (let i = 0; i < Pots.Pot1.length; i++) {
 const StartDraw = () => {
     let groups = document.querySelectorAll(".group");
 
+    // Destructure Pots
+    const { Pot1, Pot2, Pot3, Pot4 } = Pots;
+
+    // Handle Group 1 explicitly to place Morocco
+    let group1 = groups[0]; // First group
+
+    // Randomly select other teams for Group 1
+    let pot1_index = 0
+    let pot2_index = Math.floor(Math.random() * Pot2.length);
+    let pot3_index = Math.floor(Math.random() * Pot3.length);
+    let pot4_index = Math.floor(Math.random() * Pot4.length);
+    group1.innerHTML = `
+        <h3>Group 1</h3>
+        <ul class="group-teams">
+            <li><img src="${Pot1[pot1_index].flag}" alt="${Pot1[pot1_index].name}">${Pot1[pot1_index].name}</li>
+            <li><img src="${Pot2[pot2_index].flag}" alt="${Pot2[pot2_index].name}">${Pot2[pot2_index].name}</li>
+            <li><img src="${Pot3[pot3_index].flag}" alt="${Pot3[pot3_index].name}">${Pot3[pot3_index].name}</li>
+            <li><img src="${Pot4[pot4_index].flag}" alt="${Pot4[pot4_index].name}">${Pot4[pot4_index].name}</li>
+        </ul>
+    `;
+    Pot1.splice(pot1_index, 1)
+    Pot2.splice(pot2_index, 1)
+    Pot3.splice(pot3_index, 1)
+    Pot4.splice(pot4_index, 1)
+
+    // Handle the remaining groups
     groups.forEach((group, i) => {
-        // Destructure Pots and get random indexes
-        const { Pot1, Pot2, Pot3, Pot4 } = Pots;
+        if (i === 0) return; // Skip Group 1
 
         let pot1_index = Math.floor(Math.random() * Pot1.length);
         let pot2_index = Math.floor(Math.random() * Pot2.length);
         let pot3_index = Math.floor(Math.random() * Pot3.length);
         let pot4_index = Math.floor(Math.random() * Pot4.length);
 
-        // Update group content
         group.innerHTML = `
-            <h3>Group ${i + 1}</h3>
-            <ul class="group-teams">
-                <li>${Pot1.splice(pot1_index, 1)}</li>
-                <li>${Pot2.splice(pot2_index, 1)}</li>
-                <li>${Pot3.splice(pot3_index, 1)}</li>
-                <li>${Pot4.splice(pot4_index, 1)}</li>
-            </ul>
-        `;
+        <h3>Group ${i + 1}</h3>
+        <ul class="group-teams">
+            <li><img src="${Pot1[pot1_index].flag}" alt="${Pot1[pot1_index].name}">${Pot1[pot1_index].name}</li>
+            <li><img src="${Pot2[pot2_index].flag}" alt="${Pot2[pot2_index].name}">${Pot2[pot2_index].name}</li>
+            <li><img src="${Pot3[pot3_index].flag}" alt="${Pot3[pot3_index].name}">${Pot3[pot3_index].name}</li>
+            <li><img src="${Pot4[pot4_index].flag}" alt="${Pot4[pot4_index].name}">${Pot4[pot4_index].name}</li>
+        </ul>
+    `;
+    Pot1.splice(pot1_index, 1)
+    Pot2.splice(pot2_index, 1)
+    Pot3.splice(pot3_index, 1)
+    Pot4.splice(pot4_index, 1)
+
     });
 
     // Reset Pots for another draw
