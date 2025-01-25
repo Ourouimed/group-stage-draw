@@ -18,8 +18,8 @@ let Pots = {
         { name: "Egypt", flag: "assets/flags/eg.webp" },
         { name: "Algeria", flag: "assets/flags/dz.webp" },
     ...]
-
-```}
+}
+```
 3 - Open index.html file
 
 ## usage 
