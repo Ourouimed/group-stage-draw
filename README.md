@@ -27,7 +27,7 @@ let Pots = {
 - each group will had 4 team 1 team from each pot
 - teams in the same pot can't be in the same group 
 
-## What's new 20/01/2025 ?
+## What's new 25/01/2025 ?
 - Changing Website UI (AFCON 2025 theme)
 - Add Each team flag and name 
 - The draw process automaticly put Morocco in first group (Host country)

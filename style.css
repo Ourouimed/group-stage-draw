@@ -52,12 +52,12 @@ button {
     border-radius: 8px;
 }   
 #start-btn, #hide-pots {
-    background: #ad0101;
+    background: #800000;
     color: white;
 }
 #show-pots {
-    background: #0f9f0f;
-    color: white;
+    background: #24db72;
+    color: black;
 }
 #hide-pots{
     display: block;
@@ -99,9 +99,11 @@ table.pot tr td{
 }
 
 table.pot > thead > tr {
-    background: #0f9f0f;
-    color: white;
-    text-align: center;
+    background: #24db72;
+    color: black;
+    padding: 5px;
+    font-size: 18px;
+    display: block;
 }
 
 table.pot > tbody > tr{
