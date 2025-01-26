@@ -33,14 +33,14 @@ let Pots = {
         { name: "Angola", flag: "assets/flags/ao.webp" },
         { name: "Zambia", flag: "assets/flags/zm.webp" },
         { name: "Equatorial Guinea", flag: "assets/flags/gq.webp" },
-        { name: "Guinea", flag: "assets/flags/gn.webp" },
+        { name: "Uganda", flag: "assets/flags/ug.webp" },
         { name: "Benin", flag: "assets/flags/bj.webp" }
     ],
     Pot4: [
         { name: "Mozambique", flag: "assets/flags/mz.webp" },
         { name: "Comoros", flag: "assets/flags/km.webp" },
         { name: "Tanzania", flag: "assets/flags/tz.webp" },
-        { name: "Gambia", flag: "assets/flags/gm.webp" },
+        { name: "Sudan", flag: "assets/flags/sd.webp" },
         { name: "Zimbabwe", flag: "assets/flags/zw.webp" },
         { name: "Botswana", flag: "assets/flags/bw.webp" }
     ]
